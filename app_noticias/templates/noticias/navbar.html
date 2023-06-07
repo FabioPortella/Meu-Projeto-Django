@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #aaacad;">
+  <div class="container-fluid container">
+      
+    <a class="navbar-brand" href="{% url 'noticias:index' %}">Blog de Notícias</a>
+    <button class="navbar-toggler" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#navbarSupportedContent" 
+      aria-controls="navbarSupportedContent" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {% if user.is_authenticated %}
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item active"><a class="nav-link" href="#">Noticias</a></li>
+        </ul>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <span class="navbar-text"> Olá,  </span>
+          <li class="nav-item"><a class="nav-link" href="#">Log out</a></li>
+        </ul>
+      {% else %}
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <span class="nav-link dropdown-toggle" 
+              id="navbarDropdown" 
+              role="button" 
+              data-bs-toggle="dropdown" 
+              aria-expanded="false">
+            Entradas de Usuário
+            </span>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="dropdown-item"><a class="nav-link" href="#">Registrar</a></li>
+              <li class="dropdown-item"><a class="nav-link" href="#">Log in</a></li>
+            </ul>
+          </li>
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</nav>
