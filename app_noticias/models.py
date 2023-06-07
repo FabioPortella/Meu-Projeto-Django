@@ -7,3 +7,6 @@ class Noticia(models.Model):
     data_publicacao = models.DateTimeField(auto_now_add=True)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     texto = models.TextField()
+
+    def __str__(self):
+        return self.titulo

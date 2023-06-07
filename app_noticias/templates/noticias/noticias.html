@@ -1,0 +1,30 @@
+{% extends "noticias/base.html" %}
+
+{% block content %}
+
+    {% for noticia in noticias %}
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="row">
+                        <h3>{{ noticia.titulo}}</h3>
+                    </div>
+                    <div class="row" >
+                        <h6>
+                            Autor: {{ noticia.autor}}
+                            <br>
+                            Publicado em: {{ noticia.data_publicacao|date:'d / M / Y - H:i' }}
+                        </h6>
+                    </div> 
+                </div>           
+            </div>
+            <div class="card-body" style="text-align: justify;">
+                {{ noticia.texto|linebreaks }}
+            </div>            
+        </div>
+        <br>
+    {% empty %}
+        <h4>Ainda não há nóticias cadastradas.</h4>
+    {% endfor %}
+     
+{% endblock %}
