@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Noticia
+from .models import Noticia, Comentario
 
 def index(request):
     template = 'noticias/index.html'
@@ -18,12 +18,9 @@ def noticias(request):
 def noticia(request, id):
     template = 'noticias/noticia.html'
     noticia = Noticia.objects.get(id=id)
-    #comentarios = comentario.entry_set.order_by('-data_comentario')
-    #context = {
-    #    'noticia': noticia,
-    #    'comentarios': comentarios 
-    #    }
+    comentarios = Comentario.objects.filter(titulo_comentario=request.id).order_by('-data_comentario')
     context = {
-        'noticia': noticia 
-    }
+        'noticia': noticia,
+        'comentarios': comentarios 
+        }
     return render(request, template , context)
