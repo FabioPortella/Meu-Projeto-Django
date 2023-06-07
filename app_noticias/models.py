@@ -10,3 +10,10 @@ class Noticia(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+
+class Comentario(models.Model):
+    texto_comentario = models.TimeField()
+    titulo_comentario = models.ForeignKey(Noticia, on_delete=models.CASCADE)
+    autor_comentario = models.ForeignKey(User, on_delete=models.CASCADE)
+    data_comentario = models.DateTimeField(auto_now_add=True)

@@ -18,7 +18,6 @@ def noticias(request):
 def noticia(request, id):
     template = 'noticias/noticia.html'
     noticia = Noticia.objects.get(id=id)
-    #check_comentario_autor(comentario, request)
     #comentarios = comentario.entry_set.order_by('-data_comentario')
     #context = {
     #    'noticia': noticia,
