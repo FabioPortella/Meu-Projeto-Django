@@ -14,3 +14,17 @@ def noticias(request):
         'noticias': noticias
         }
     return render(request, template , context)
+
+def noticia(request, id):
+    template = 'noticias/noticia.html'
+    noticia = Noticia.objects.get(id=id)
+    #check_comentario_autor(comentario, request)
+    #comentarios = comentario.entry_set.order_by('-data_comentario')
+    #context = {
+    #    'noticia': noticia,
+    #    'comentarios': comentarios 
+    #    }
+    context = {
+        'noticia': noticia 
+    }
+    return render(request, template , context)

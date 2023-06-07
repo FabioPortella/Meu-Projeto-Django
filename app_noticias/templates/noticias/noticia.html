@@ -1,0 +1,28 @@
+{% extends "noticias/base.html" %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="row">
+                    <h4 class="text-primary">{{ noticia.titulo}}</h4>
+                </div>
+                <div class="row" >
+                    <h6>
+                        Autor: {{ noticia.autor}}
+                        <br>
+                        Publicado em: {{ noticia.data_publicacao|date:'d / M / Y - H:i' }}
+                    </h6>
+                </div> 
+            </div>           
+        </div>
+        <div class="card-body" style="text-align: justify;">
+            <div class="overflow-auto" style="max-height: 250px;">
+                {{ noticia.texto|linebreaks }}
+            </div>            
+        </div>            
+    </div>
+    <br>
+     
+{% endblock %}
