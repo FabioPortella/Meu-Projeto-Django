@@ -17,3 +17,9 @@ class Comentario(models.Model):
     titulo_comentario = models.ForeignKey(Noticia, on_delete=models.CASCADE)
     autor_comentario = models.ForeignKey(User, on_delete=models.CASCADE)
     data_comentario = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        if len(self.texto_comentario) > 50:
+            return self.texto_comentario[:50] + "..."
+        else:
+            return self.texto_comentario
