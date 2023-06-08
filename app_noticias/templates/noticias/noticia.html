@@ -24,5 +24,26 @@
         </div>            
     </div>
     <br>
+    {% for comentario in comentarios %}
+        <div class="card">
+            <div class="card-header">
+                <div class="row" >
+                    <h6>
+                        Autor: {{ comentario.autor_comentario}}
+                        <br>
+                        {{ comentario.data_comentario|date:'d / M / Y - H:i' }}
+                    </h6>
+                </div> 
+            </div>           
+  
+            <div class="card-body" style="text-align: justify;">
+                <{{ comentario.texto_comentario}}
+            </div>      
+        </div>
+        <br>
+    {% empty %}
+        <h4>Ainda não há comentários cadastrados.</h4>
+    {% endfor %}
+
      
 {% endblock %}

@@ -18,7 +18,7 @@ def noticias(request):
 def noticia(request, id):
     template = 'noticias/noticia.html'
     noticia = Noticia.objects.get(id=id)
-    comentarios = Comentario.objects.filter(titulo_comentario=request.id).order_by('-data_comentario')
+    comentarios = Comentario.objects.filter(titulo_comentario=id).order_by('-data_comentario')
     context = {
         'noticia': noticia,
         'comentarios': comentarios 
