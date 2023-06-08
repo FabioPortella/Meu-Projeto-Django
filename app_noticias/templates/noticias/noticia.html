@@ -17,32 +17,32 @@
                 </div> 
             </div>           
         </div>
-        <div class="card-body" style="text-align: justify;">
-            <div class="overflow-auto" style="max-height: 250px;">
-                {{ noticia.texto|linebreaks }}
-            </div>            
+        <div class="card-body" style="text-align: justify;">            
+                {{ noticia.texto|linebreaks }}                      
         </div>            
     </div>
     <br>
+    <h4 style="text-align: center;"> Comentários </h4>
     {% for comentario in comentarios %}
         <div class="card">
             <div class="card-header">
-                <div class="row" >
-                    <h6>
-                        Autor: {{ comentario.autor_comentario}}
-                        <br>
-                        {{ comentario.data_comentario|date:'d / M / Y - H:i' }}
-                    </h6>
-                </div> 
+                <div class='row'>
+                    <div class="col" >
+                        <h6> {{ comentario.autor_comentario}}</h6>
+                    </div>  
+                    <div class="col" style="text-align: right;">
+                        <h6> {{ comentario.data_comentario|date:'d / M / Y - H:i' }} </h6>
+                    </div> 
+                </div>
             </div>           
   
             <div class="card-body" style="text-align: justify;">
-                <{{ comentario.texto_comentario}}
+                {{ comentario.texto_comentario|linebreaks}}
             </div>      
         </div>
         <br>
     {% empty %}
-        <h4>Ainda não há comentários cadastrados.</h4>
+        <h5>Ainda não há comentários cadastrados.</h5>
     {% endfor %}
 
      
