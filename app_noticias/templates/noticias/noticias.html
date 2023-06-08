@@ -10,21 +10,40 @@
                         <h4><a href="{% url 'noticias:noticia' noticia.id %}" style="text-decoration: none;">{{ noticia.titulo }}</a></h4>
                     </div>
                     <div class="row" >
-                        <h6>
-                            Autor: {{ noticia.autor}}
-                            <br>
-                            Publicado em: {{ noticia.data_publicacao|date:'d / M / Y - H:i' }}
-                        </h6>
+                        <div class="col"><h6>Autor: {{ noticia.autor}}</h6></div>
+                        <div class="col" style="text-align: right;">
+                            <h6>Publicado em: {{ noticia.data_publicacao|date:'d / M / Y - H:i' }}</h6>
+                        </div>
                     </div> 
                 </div>           
             </div>  
             <div class="card-body" style="text-align: justify;">
-                <h5> {{ noticia.sub_titulo}} </h5>
+                <p> {{ noticia.sub_titulo}} </p>
             </div>      
         </div>
         <br>
     {% empty %}
         <h4>Ainda não há nóticias cadastradas.</h4>
     {% endfor %}
+
+    <nav class="d-flex justify-content-center" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            {% if noticias.has_previous %}
+              <a href="?page={{noticias.previous_page_number}}" class="page-link">
+                  <span aria-hidden="true">&laquo;</span>
+              </a>
+            {% endif %}
+          </li>
+          <li class="page-item"><a class="page-link" href="#">{{ noticias.number }}</a></li>
+          <li class="page-item">
+            {% if noticias.has_next %}
+              <a href="?page={{noticias.next_page_number}}" class="page-link">
+                  <span aria-hidden="true">&raquo;</span>
+              </a>
+            {% endif %}
+          </li>
+        </ul>
+    </nav>
      
 {% endblock %}
