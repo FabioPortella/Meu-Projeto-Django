@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light" style="background-color: #aaacad;">
   <div class="container-fluid container">
       
-    <a class="navbar-brand" href="{% url 'noticias:index' %}">Blog de Notícias</a>
+    <a class="navbar-brand" href="{% url 'noticias:index' %}">Blog - Ponto de Vista</a>
     <button class="navbar-toggler" 
       type="button" 
       data-bs-toggle="collapse" 
@@ -13,13 +13,13 @@
     </button>    
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      {% if user.is_authenticated %}
-         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item active"><a class="nav-link" href="{% url 'noticias:noticias' %}">Noticias</a></li>
         </ul>
+      {% if user.is_authenticated %}
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <span class="navbar-text"> Olá, {{ user.username }} </span>
-          <li class="nav-item"><a class="nav-link" href="#">Log out</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'users:logout' %}">Log out</a></li>
         </ul>
       {% else %}
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -32,8 +32,8 @@
             Entradas de Usuário
             </span>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li class="dropdown-item"><a class="nav-link" href="#">Registrar</a></li>
-              <li class="dropdown-item"><a class="nav-link" href="#">Log in</a></li>
+              <li class="dropdown-item"><a class="nav-link" href="{%  url 'users:register' %}">Registrar</a></li>
+              <li class="dropdown-item"><a class="nav-link" href="{%  url 'users:login' %}">Log in</a></li>
             </ul>
           </li>
         </ul>
