@@ -1,0 +1,43 @@
+{% extends "noticias/base.html" %}
+
+{% block content %}
+
+    {% for autor in autores %}
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="row">
+                        <h4><a href="#" style="text-decoration: none;">{{ autor.username }}</a></h4>
+                    </div>
+                    <div class="row" >
+                        <div class="col"><h6>{{ autor.first_name}} {{ autor.last_name}}</h6></div>
+                    </div> 
+                </div>           
+            </div>
+        </div>
+        <br>
+    {% empty %}
+        <h4>Ainda não há nóticias cadastradas.</h4>
+    {% endfor %}
+
+    <nav class="d-flex justify-content-center" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            {% if autores.has_previous %}
+              <a href="?page={{autores.previous_page_number}}" class="page-link">
+                  <span aria-hidden="true">&laquo;</span>
+              </a>
+            {% endif %}
+          </li>
+          <li class="page-item"><a class="page-link" href="#">{{ autores.number }}</a></li>
+          <li class="page-item">
+            {% if autores.has_next %}
+              <a href="?page={{autores.next_page_number}}" class="page-link">
+                  <span aria-hidden="true">&raquo;</span>
+              </a>
+            {% endif %}
+          </li>
+        </ul>
+    </nav>
+     
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Noticia(models.Model):
     titulo = models.CharField(max_length=100)
     sub_titulo = models.CharField(max_length=150)
