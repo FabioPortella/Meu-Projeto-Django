@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Noticia(models.Model):
     titulo = models.CharField(max_length=100)
     sub_titulo = models.CharField(max_length=150)
-    data_publicacao = models.DateTimeField(auto_now_add=True)
+    data = models.DateTimeField(auto_now_add=True)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     texto = models.TextField()
 
@@ -13,13 +13,13 @@ class Noticia(models.Model):
     
 
 class Comentario(models.Model):
-    texto_comentario = models.TextField()
-    titulo_comentario = models.ForeignKey(Noticia, on_delete=models.CASCADE)
-    autor_comentario = models.ForeignKey(User, on_delete=models.CASCADE)
-    data_comentario = models.DateTimeField(auto_now_add=True)
+    texto = models.TextField()
+    noticia = models.ForeignKey(Noticia, on_delete=models.CASCADE)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
+    data = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        if len(self.texto_comentario) > 50:
-            return self.texto_comentario[:50] + "..."
+        if len(self.texto) > 50:
+            return self.texto[:50] + "..."
         else:
-            return self.texto_comentario
+            return self.texto

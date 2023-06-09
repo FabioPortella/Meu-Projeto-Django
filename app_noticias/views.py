@@ -10,7 +10,7 @@ def index(request):
 
 def noticias(request):
     template = 'noticias/noticias.html'
-    noticias = Noticia.objects.all().order_by('-data_publicacao')
+    noticias = Noticia.objects.all().order_by('-data')
 
     paginator = Paginator(noticias, 4)
     page_number = request.GET.get('page')
@@ -24,7 +24,7 @@ def noticias(request):
 def noticia(request, id):
     template = 'noticias/noticia.html'
     noticia = Noticia.objects.get(id=id)
-    comentarios = Comentario.objects.filter(titulo_comentario=id).order_by('-data_comentario')
+    comentarios = Comentario.objects.filter(noticia=id).order_by('-data')
 
     context = {
         'noticia': noticia,

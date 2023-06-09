@@ -12,7 +12,7 @@
                     <h6>
                         Autor: <span class="badge bg-warning"><a href="#" style="text-decoration: none;">{{ noticia.autor}}</a></span>
                         <br>
-                        Publicado em: {{ noticia.data_publicacao|date:'d / M / Y - H:i' }}
+                        Publicado em: {{ noticia.data|date:'d / M / Y - H:i' }}
                     </h6>
                 </div> 
             </div>           
@@ -28,16 +28,16 @@
             <div class="card-header">
                 <div class='row'>
                     <div class="col" >
-                        <h6> {{ comentario.autor_comentario}}</h6>
+                        <h6> {{ comentario.autor}}</h6>
                     </div>  
                     <div class="col" style="text-align: right;">
-                        <h6> {{ comentario.data_comentario|date:'d / M / Y - H:i' }} </h6>
+                        <h6> {{ comentario.data|date:'d / M / Y - H:i' }} </h6>
                     </div> 
                 </div>
             </div>           
   
             <div class="card-body" style="text-align: justify;">
-                <span>{{ comentario.texto_comentario|linebreaks}}</span>
+                <span>{{ comentario.texto|linebreaks}}</span>
             </div>      
         </div>
         <br>
